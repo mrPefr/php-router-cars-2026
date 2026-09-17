@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARS</title>
     <style>
-        header, main, nav, footer{
+        header, main, nav, footer, .car{
             border:1px solid;
             padding:5%;
         }
@@ -17,3 +17,4 @@
             <a href="/">HOME</a>
         </nav>
     </header>
+    <main>
