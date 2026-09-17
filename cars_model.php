@@ -39,5 +39,30 @@ class Cars
 
     }
 
+    public static function updateCar($data){
+        $cars = self::getCars();
+        if(empty($data['id'])) return "no_id";
+
+        $id = $data['id'];
+        $index = -1;
+        foreach($cars as $key=>$car){
+            if($car['id'] == $id) $index = $key;
+            break;
+        }
+
+        if($index>-1){
+            $cars[$index]['brand'] = !empty(trim($data['brand'])) ? $data['brand'] : $cars[$index]['brand'];
+            $cars[$index]['model'] = !empty(trim($data['model'])) ? $data['model'] : $cars[$index]['model'];
+            $cars[$index]['price'] = !empty(trim($data['price'])) ? $data['price'] : $cars[$index]['price'];
+          
+            self::saveCars($cars);
+        }
+
+     
+      
+
+
+    }
+
 
 }

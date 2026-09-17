@@ -3,7 +3,7 @@
         "id": "id_3",
         "brand": "Audi",
         "model": "A4",
-        "price": 205000
+        "price": "205000"
     },
     {
         "id": "id_4",

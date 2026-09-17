@@ -19,6 +19,7 @@ $cars = Cars::getCars();
             <summary>EDIT</summary>
             <div class="car create">
                 <form action="/cars/update" method="post">
+                    <input type="hidden" name="id" value = "<?= $id ?>">
                     <input type="text" name="brand" placeholder="BRAND" value = "<?= $brand ?>">
                     <input type="text" name="model" placeholder="MODEL" value = "<?= $model ?>">
                     <input type="number" name="price" placeholder="PRICE" value = "<?= $price ?>">
