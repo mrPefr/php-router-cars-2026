@@ -58,5 +58,11 @@
         "brand": "Tesla",
         "model": "Model S",
         "price": "1000000"
+    },
+    {
+        "brand": "SAAB",
+        "model": "900",
+        "price": "123123",
+        "id": "16aabd681e8173"
     }
 ]

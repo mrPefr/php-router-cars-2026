@@ -30,4 +30,14 @@ class Cars
         }
         self::saveCars($filteredCars);
     }
+
+    public static function createCar($data){
+        $cars = self::getCars();
+        $data['id'] = uniqid(true);
+        array_push($cars, $data);
+        self::saveCars($cars);
+
+    }
+
+
 }
