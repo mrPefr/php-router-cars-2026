@@ -3,14 +3,16 @@
 require_once("router.php");
 require_once("cars_model.php");
 require_once("response.php");
+require_once("auth.php");
 
 app::get("/index", function(){
 
     $arr = ["Hello", "Noor", "t4"];
 
-    foreach($arr as $i => $item){
-        if($item == "t4") echo $i;
-    }
+   $i= array_find_key($arr,function($item){
+       return $item == "Noor";
+    });
+    echo "Noor is on place $i";
 
 });
 
@@ -57,3 +59,33 @@ app::get('/cars/search/$name', function($name){
 });
 
 
+
+// auth-routes
+
+app::get("/register", "html/register");
+app::post("/register", function(){
+
+$email = $_POST['email'] ?? "";
+if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    Res::redirect("/error/email error");
+    return;
+}
+
+$password = $_POST['password'] ?? "";
+if(strlen($password)<8){
+    Res::redirect("/error/Password must be at least 8 char long");
+    return;
+}
+
+$user = [
+    "role"=>"user",
+    "email"=>$email,
+    "password"=>$password
+];
+
+Auth::register($user);
+Res::redirect("/?register_success");
+/* Kolla så att inkommande data har email och password ifyllt.
+Kolla också så att det är av typen email */
+
+});

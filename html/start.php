@@ -30,6 +30,7 @@
             <a href="/">HOME</a>
             <a href="/cars">CARS</a>
             <a href="/cars/create">CREATE CAR</a>
+            <a href="/register">REGISTER</a>
         </nav>
     </header>
     <main>
