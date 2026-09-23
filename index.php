@@ -1,18 +1,18 @@
 <?php
+session_set_cookie_params([
+    'httponly' => true
+]);
+/* ini_set("session.cookie_httponly",1); */
+session_start();
 
 require_once("router.php");
 require_once("cars_model.php");
 require_once("response.php");
 require_once("auth.php");
 
-app::get("/index", function(){
+app::get("/session", function(){
 
-    $arr = ["Hello", "Noor", "t4"];
-
-   $i= array_find_key($arr,function($item){
-       return $item == "Noor";
-    });
-    echo "Noor is on place $i";
+    var_dump($_SESSION);
 
 });
 
@@ -70,13 +70,11 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     Res::redirect("/error/email error");
     return;
 }
-
 $password = $_POST['password'] ?? "";
 if(strlen($password)<8){
     Res::redirect("/error/Password must be at least 8 char long");
     return;
 }
-
 $user = [
     "role"=>"user",
     "email"=>$email,
@@ -89,3 +87,12 @@ Res::redirect("/?register_success");
 Kolla också så att det är av typen email */
 
 });
+
+
+app::post("/login", function(){
+
+    echo Auth::login($_POST);
+
+});
+
+app::get("/login", "html/login" );

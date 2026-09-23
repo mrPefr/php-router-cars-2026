@@ -1,10 +1,4 @@
 {
-    "Lenny@lenny.se": {
-        "email": "Lenny@lenny.se",
-        "password": "$2y$12$xTXwRfVYLotqNuXc68GZAukzgONUfRxm18MB1gyIAxL0X1k3bLDWS",
-        "role": "user",
-        "id": "16ab0ed3b9d1dc"
-    },
     "mrpefr@gmail.com": {
         "role": "user",
         "email": "mrpefr@gmail.com",

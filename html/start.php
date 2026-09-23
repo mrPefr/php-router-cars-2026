@@ -31,6 +31,7 @@
             <a href="/cars">CARS</a>
             <a href="/cars/create">CREATE CAR</a>
             <a href="/register">REGISTER</a>
+            <a href="/login">LOGIN</a>
         </nav>
     </header>
     <main>

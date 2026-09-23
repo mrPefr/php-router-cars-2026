@@ -29,7 +29,26 @@ class Auth{
 
 
     }
-    public static function login(){}
+    public static function login($user){
+
+        $users = Users::getUsers();
+
+        if(empty($users[$user['email']])) return "Bad Credentials";
+
+        $dbUser = $users[$user['email']];
+
+        if(!password_verify($user['password'], $dbUser['password']))
+            return "Bad Credentials pw";
+
+        // Fixa session
+        $_SESSION["userid"] = $dbUser['id'];
+        $_SESSION["email"] = $dbUser['email'];
+
+        return "Login Succes";
+
+
+
+    }
     public static function logout(){}
 
 
