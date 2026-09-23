@@ -67,12 +67,12 @@ app::post("/register", function(){
 
 $email = $_POST['email'] ?? "";
 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    Res::redirect("/error/email error");
+    Res::redirect("/register?error=email error");
     return;
 }
 $password = $_POST['password'] ?? "";
 if(strlen($password)<8){
-    Res::redirect("/error/Password must be at least 8 char long");
+    Res::redirect("/register?error=Password must be at least 8 char long");
     return;
 }
 $user = [
@@ -86,7 +86,7 @@ if(isset($regReturn['error'])){
   return  Res::redirect("/login?error=".$regReturn['error']);
 }
 
-Res::redirect("/login");
+Res::redirect("/login?message=Please Login");
 
 });
 
@@ -95,7 +95,7 @@ app::post("/login", function(){
 
    try{
     $loginReturn = Auth::login($_POST);
-    Res::redirect("/session");
+    Res::redirect("/cars?message=$loginReturn");
    } 
    catch(Exception $e){
     Res::redirect("/login?error=".$e->getMessage());

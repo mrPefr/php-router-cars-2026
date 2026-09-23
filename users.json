@@ -16,5 +16,11 @@
         "email": "lars@lars.se",
         "password": "$2y$12$JIY3lx4Vf7ZyfJwQR1UO\/.uzY43nq0BqDE3R3VNtkNTcnweyT7G9S",
         "id": "16ab377f6b1f9b"
+    },
+    "jens-peter@jens.se": {
+        "role": "user",
+        "email": "jens-peter@jens.se",
+        "password": "$2y$12$DpTCOM\/aBnj1TTKzRqxHBOEPYmXkVHVxBndapDdfm4KpHzLqufbb.",
+        "id": "16ab37ef2b1036"
     }
 }
