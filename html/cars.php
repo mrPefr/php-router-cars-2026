@@ -14,6 +14,13 @@ $cars = Cars::getCars();
         <h3><?= htmlspecialchars($brand); ?></h3>
         <h4><?= htmlspecialchars($model) ?></h4>
         <h5><?= htmlspecialchars($price) ?></h5>
+
+
+        <?php
+            if(isset($_SESSION['userId']) && ($_SESSION["role"]== "admin" || $_SESSION['userId']==$userId )){
+
+            
+        ?>
         <a href="/deletecar/<?= $id ?>">DELETE</a>
         <details>
             <summary>EDIT</summary>
@@ -29,6 +36,9 @@ $cars = Cars::getCars();
 
             </div>
         </details>
+        <?php
+            } // End if
+        ?>
     </div>
 
 

@@ -26,7 +26,6 @@ class Auth{
 
         if(empty($users[$user['email']])){
             throw new Exception("Bad Credentials");
-      
         }
 
         $dbUser = $users[$user['email']];
@@ -35,8 +34,9 @@ class Auth{
             throw new Exception("Bad Credentials pw");
 
         // Fixa session
-        $_SESSION["userid"] = $dbUser['id'];
+        $_SESSION["userId"] = $dbUser['id'];
         $_SESSION["email"] = $dbUser['email'];
+        $_SESSION["role"] = $dbUser['role'];
 
         return "Login Succes";
 
@@ -44,6 +44,16 @@ class Auth{
 
     }
     public static function logout(){}
+
+    public static function checkAuth(){
+
+        if(!empty($_SESSION['userId'])){
+            return true;
+        }
+
+        return false;
+
+    }
 
 
 

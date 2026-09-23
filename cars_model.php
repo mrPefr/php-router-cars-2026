@@ -22,6 +22,16 @@ class Cars
     {
         $cars = self::getCars();
 
+
+        $delCar = array_find($cars, function($c) use($id){
+            return $c['id'] == $id;
+        });
+
+
+        if(($_SESSION['userId'] != $delCar['userId']) && $_SESSION["role"]!= "admin")
+            throw new Exception("not your car"); 
+ 
+
         // Manuell filtrering
         $filteredCars = [];
 
@@ -34,6 +44,7 @@ class Cars
     public static function createCar($data){
         $cars = self::getCars();
         $data['id'] = uniqid(true);
+        $data['userId'] = $_SESSION['userId'];
         array_push($cars, $data);
         self::saveCars($cars);
 
@@ -44,6 +55,15 @@ class Cars
         if(empty($data['id'])) return "no_id";
 
         $id = $data['id'];
+
+        $delCar = array_find($cars, function($c) use($id){
+            return $c['id'] == $id;
+        });
+        if(($_SESSION['userId'] != $delCar['userId']) && $_SESSION["role"]!= "admin")
+            throw new Exception("not your car"); 
+
+
+
         $index = -1;
         foreach($cars as $key=>$car){
             if($car['id'] == $id) $index = $key;

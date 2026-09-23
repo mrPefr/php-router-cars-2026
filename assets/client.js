@@ -3,6 +3,6 @@ function hideErrorSection(){
 
     setTimeout(()=>{
         document.querySelector(".messages").classList.add("hidden");
-    },3000);
+    },6000);
 
 }
