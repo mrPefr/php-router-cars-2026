@@ -2,7 +2,7 @@
 
 
 <div class="form">
-
+<h2>REGISTER</h2>
     <form action="/register" method="post">
         <input required type="email" name="email" placeholder="EMAIL" autocomplete="true">
         <input required type="password" name="password" placeholder="PASSWORD">

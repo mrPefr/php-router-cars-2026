@@ -21,6 +21,10 @@
             width:100%;
             padding:1%;
         }
+        .error{
+            color:red;
+        }
+
 
     </style>
 </head>
@@ -33,5 +37,18 @@
             <a href="/register">REGISTER</a>
             <a href="/login">LOGIN</a>
         </nav>
+
+        <section class="error">
+            <h3>
+
+          
+            <?php 
+            if(!empty($_GET['error'])){
+                echo $_GET['error'];
+            }
+            ?>
+            </h3>
+        </section>
+
     </header>
     <main>

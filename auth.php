@@ -8,7 +8,7 @@ class Auth{
 
         $users = Users::getUsers();
 
-        if(isset($users[$user['email']])) return "User Exists";
+        if(isset($users[$user['email']])) return ["error"=>"User Exists"];
 
         $user['id'] = uniqid(true);
         $user["password"] = password_hash($user["password"], PASSWORD_DEFAULT,["cost"=>12]);
@@ -17,28 +17,22 @@ class Auth{
         $users[$user['email']] = $user;
 
         Users::saveUsers($users);
-
-
-        /* Vad ska denna funktion egentligen göra?
-        Ta emot ny user
-        Kolla om denna redan finns
-        Lägga till id
-        hasha lösenord
-        ev spara ner användaren
-        */
-
+        return ["success"=>true];
 
     }
     public static function login($user){
 
         $users = Users::getUsers();
 
-        if(empty($users[$user['email']])) return "Bad Credentials";
+        if(empty($users[$user['email']])){
+            throw new Exception("Bad Credentials");
+      
+        }
 
         $dbUser = $users[$user['email']];
 
         if(!password_verify($user['password'], $dbUser['password']))
-            return "Bad Credentials pw";
+            throw new Exception("Bad Credentials pw");
 
         // Fixa session
         $_SESSION["userid"] = $dbUser['id'];

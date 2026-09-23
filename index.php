@@ -81,17 +81,25 @@ $user = [
     "password"=>$password
 ];
 
-Auth::register($user);
-Res::redirect("/?register_success");
-/* Kolla så att inkommande data har email och password ifyllt.
-Kolla också så att det är av typen email */
+$regReturn = Auth::register($user);
+if(isset($regReturn['error'])){
+  return  Res::redirect("/login?error=".$regReturn['error']);
+}
+
+Res::redirect("/login");
 
 });
 
 
 app::post("/login", function(){
 
-    echo Auth::login($_POST);
+   try{
+    $loginReturn = Auth::login($_POST);
+    Res::redirect("/session");
+   } 
+   catch(Exception $e){
+    Res::redirect("/login?error=".$e->getMessage());
+   }
 
 });
 
